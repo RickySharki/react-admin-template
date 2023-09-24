@@ -28,5 +28,5 @@ export default {
     'subject-full-stop': [0, 'never'], // 忽略<subject>以.为结束标志检查
     'subject-case': [0, 'never'], // 忽略<subject>格式小写检查
     'header-max-length': [0, 'always', 72], // 忽略header最长72的检查
-  },
-}
+  }
+};
