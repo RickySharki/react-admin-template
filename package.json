@@ -38,8 +38,7 @@
     ]
   },
   "gitHooks": {
-    "pre-commit": "lint-staged",
-    "pre-push": "lint-staged",
+    "precommit": "lint-staged",
     "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
   }
 }
