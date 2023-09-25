@@ -17,7 +17,8 @@ export default defineConfig(({ command, mode }) => {
     "🚀 ~ file: vite.config.ts:13 ~ defineConfig ~ env:",
     env,
     command,
-    mode
+    mode,
+    isDev
   );
   return {
     plugins: [
@@ -41,7 +42,9 @@ export default defineConfig(({ command, mode }) => {
       }),
       viteMockServe({
         mockPath: "./src/service/mock",
-        enable: isDev,
+        // 本地、生产都使用mock
+        localEnabled: true,
+        prodEnabled: true
       }),
     ],
   };
