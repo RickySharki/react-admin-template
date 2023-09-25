@@ -1,22 +1,17 @@
-import { useState } from "react";
-import { Button } from "antd";
+import { HashRouter } from "react-router-dom";
+import Router from "@/routers/index";
+import { ConfigProvider } from "antd";
+
 import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0);
-
+const App = () => {
   return (
-    <>
-      <div className="card">
-        <Button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </Button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-    </>
+    <HashRouter>
+      <ConfigProvider>
+        <Router />
+      </ConfigProvider>
+    </HashRouter>
   );
-}
+};
 
 export default App;
