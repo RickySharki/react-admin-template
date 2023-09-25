@@ -1,0 +1,6 @@
+// 取消antd按钮点击黑边
+button[ant-click-animating-without-extra-node]::after {
+  border: 0 none;
+  opacity: 0;
+  animation: none 0 ease 0 1 normal;
+}

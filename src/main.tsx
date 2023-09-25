@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client'
 // unocss注入
 import 'virtual:uno.css'
 import App from './App.tsx'
-import './index.css'
+// 样式引入
+import './index.scss'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
