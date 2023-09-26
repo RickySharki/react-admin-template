@@ -7,6 +7,8 @@ import presetIcons from "@unocss/preset-icons";
 import presetUno from "@unocss/preset-uno";
 // mock
 import { viteMockServe } from "vite-plugin-mock";
+import { resolve } from "path";
+
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
   // 根据当前工作目录中的 `mode` 加载 .env 文件
@@ -17,9 +19,15 @@ export default defineConfig(({ command, mode }) => {
     "🚀 ~ file: vite.config.ts:13 ~ defineConfig ~ env:",
     env,
     command,
-    mode
+    mode,
+    isDev
   );
   return {
+    resolve: {
+			alias: {
+				"@": resolve(__dirname, "./src")
+			}
+		},
     plugins: [
       react(),
       UnoCSS({
@@ -41,7 +49,9 @@ export default defineConfig(({ command, mode }) => {
       }),
       viteMockServe({
         mockPath: "./src/service/mock",
-        enable: isDev,
+        // 本地、生产都使用mock
+        localEnabled: true,
+        prodEnabled: true
       }),
     ],
   };
