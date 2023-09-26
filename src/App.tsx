@@ -3,6 +3,7 @@ import Router from "@/routers/index";
 import { ConfigProvider } from "antd";
 
 import "./App.css";
+// import * as echarts from 'echarts';
 
 const App = () => {
   return (
