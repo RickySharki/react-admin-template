@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client'
 import 'virtual:uno.css'
 import App from './App.tsx'
 // 样式引入
-import './index.scss'
+import '@/styles/reset.scss'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

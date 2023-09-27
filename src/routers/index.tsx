@@ -2,7 +2,8 @@ import { Navigate, useRoutes } from "react-router-dom";
 import { RouteObject } from "@/routers/interface";
 import Login from "@/views/login";
 import Error from "@/components/error/404";
-
+import LayoutContainer from "@/layout";
+import Content from "@/views/content";
 export const rootRouter: RouteObject[] = [
   {
     path: "/",
@@ -16,6 +17,15 @@ export const rootRouter: RouteObject[] = [
       title: "登录页",
       key: "login",
     },
+  },
+  {
+    element: <LayoutContainer />,
+    children: [
+      {
+        path: "/content",
+        element: <Content />,
+      },
+    ],
   },
   {
     path: "/404",

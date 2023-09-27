@@ -20,6 +20,7 @@
     "react-router-dom": "^6.16.0"
   },
   "devDependencies": {
+    "@ant-design/icons": "^5.2.6",
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
     "@testing-library/jest-dom": "^6.1.3",
