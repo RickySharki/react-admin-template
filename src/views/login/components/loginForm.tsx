@@ -27,7 +27,7 @@ const LoginForm = () => {
       autoComplete="off"
     >
       <Form.Item<FieldType>
-        label="Username"
+        label="用户名"
         name="username"
         rules={[{ required: true, message: "Please input your username!" }]}
       >
@@ -35,7 +35,7 @@ const LoginForm = () => {
       </Form.Item>
 
       <Form.Item<FieldType>
-        label="Password"
+        label="密码"
         name="password"
         rules={[{ required: true, message: "Please input your password!" }]}
       >

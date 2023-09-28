@@ -11,11 +11,15 @@ const Login = () => {
   };
   return (
     <>
-      <div className="w-full h-full">
-        <LoginForm />
-        <span>这是登录页</span>
-        <Button onClick={to404}>to 404 Page</Button>
-        <Button onClick={toContent}>to SubContent Page</Button>
+      <div className="w-full h-full flex justify-center items-center flex-col">
+        <div className="flex justify-start">
+          <LoginForm />
+        </div>
+        <div>
+          <span>这是登录页</span>
+          <Button onClick={to404}>to 404 Page</Button>
+          <Button onClick={toContent}>to SubContent Page</Button>
+        </div>
       </div>
     </>
   );

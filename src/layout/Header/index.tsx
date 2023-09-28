@@ -1,9 +1,10 @@
+import UserDropDownMenu from "./components/User";
 const LayoutHeader = () => {
-    return (
-        <div className="layout-header w-full h-full">
+  return (
+    <div className="layout-header w-full h-full flex justify-end items-center">
+      <UserDropDownMenu />
+    </div>
+  );
+};
 
-        </div>
-    )
-}
-
-export default LayoutHeader
+export default LayoutHeader;
