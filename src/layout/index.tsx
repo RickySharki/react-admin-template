@@ -3,6 +3,8 @@ import { Outlet } from "react-router-dom";
 import LayoutMenu from "./Menu";
 import LayoutHeader from "./Header";
 import "./index.scss";
+import React from "react";
+
 const LayoutContainer = () => {
   const { Header, Footer, Sider, Content } = Layout;
   return (

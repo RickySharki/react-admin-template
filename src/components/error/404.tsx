@@ -1,6 +1,7 @@
 import { Button, Result } from "antd";
 import { useNavigate } from "react-router-dom";
 // import { HOME_URL } from "@/config/config";
+import React from "react";
 
 const NotFound = () => {
     const navigate = useNavigate();
