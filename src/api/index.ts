@@ -9,7 +9,7 @@ import { message } from "antd";
 
 const config = {
   // 默认地址请求地址，可在 .env 开头文件中修改
-  baseURL: import.meta.env.VITE_API_URL as string,
+  baseURL: "/api",
   // 设置超时时间（10s）
   timeout: 10000,
   // 跨域时候允许携带凭证
@@ -28,7 +28,10 @@ class RequestHttp {
 
     // 响应拦截器
     this.service.interceptors.response.use((response) => {
-      return response;
+      if (response.type !== "ok" && config.showError) {
+        message.error(response.message);
+      }
+      return response.data;
     });
   }
   public get<T>(
@@ -81,7 +84,7 @@ class RequestHttp {
         url,
         method: "GET",
         headers,
-        timeout: 20 * 1000,
+        timeout: 20 * 1000
       }
     );
 

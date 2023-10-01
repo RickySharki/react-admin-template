@@ -1,8 +1,9 @@
-import { Button, Checkbox, Form, Input,Layout } from "antd";
+import { Button, Checkbox, Form, Input, Layout } from "antd";
 import React from "react";
-
+import { login } from "@/https/login";
 const onFinish = (values: Record<string, any>) => {
-  console.log("Success:", values);
+  // console.log("Success:", values);
+  login(values);
 };
 
 const onFinishFailed = (errorInfo: Record<string, any>) => {

@@ -33,7 +33,7 @@ export default defineConfig(({ command, mode }) => {
       UnoCSS({
         shortcuts: [
           {
-            logo: "i-logos-react w-6em h-6em transform transition-800 hover:rotate-180",
+            logo: "w-6em h-6em transform transition-800 hover:rotate-180",
           },
         ],
         presets: [
@@ -58,6 +58,9 @@ export default defineConfig(({ command, mode }) => {
       host: '0.0.0.0',
       port: 9901,
       open: true,
+      proxy: {
+        '/api': 'http://localhost:9901',
+      },
     },
   };
 });
