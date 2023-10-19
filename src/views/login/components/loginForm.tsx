@@ -1,10 +1,7 @@
 import { Button, Checkbox, Form, Input, Layout } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 import { login } from "@/https/login";
-const onFinish = (values: Record<string, any>) => {
-  // console.log("Success:", values);
-  login(values);
-};
+import usePromise from "@/hooks/usePromise";
 
 const onFinishFailed = (errorInfo: Record<string, any>) => {
   console.log("Failed:", errorInfo);
@@ -17,6 +14,23 @@ type FieldType = {
 };
 
 const LoginForm = () => {
+  const { result, refresh, setResultCallback } = usePromise(
+    (values: Record<string, string>) => login(values)
+  );
+  const onFinish = async (values: Record<string, any>) => {
+    // console.log("Success:", values);
+    await refresh(values);
+  };
+  // 在组件中设置回调函数
+  useEffect(() => {
+    setResultCallback((newResult) => {
+      console.log(newResult); // 这里将输出最新的 result 值
+    });
+  }, []);
+  // 监听result的变化
+  useEffect(() => {
+    console.log("result", result);
+  }, [result]);
   return (
     <Form
       name="basic"

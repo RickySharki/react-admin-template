@@ -31,7 +31,7 @@ class RequestHttp {
       if (response.type !== "ok" && config.showError) {
         message.error(response.message);
       }
-      return response.data;
+      return response.data.data;
     });
   }
   public get<T>(

@@ -14,6 +14,7 @@ function usePromise<T, TArgs extends any[] = []>(
   refresh: (...args: TArgs) => Promise<T>;
   onReceive: (callback: (response: T) => void) => void;
   onError: (callback: (err: unknown) => void) => void;
+  setResultCallback: (callback: (result: T | null) => void) => void;
 } {
   const [result, setResult] = useState<T | null>(start);
   const [error, setError] = useState<unknown>(null);
@@ -38,7 +39,8 @@ function usePromise<T, TArgs extends any[] = []>(
       errorCallbacks.current.length = 0;
     };
   }, []);
-
+  // 新增一个回调函数
+  const resultCallback = useRef<((result: T | null) => void) | null>(null);
   const refresh = (...args: TArgs) => {
     return new Promise<T>((resolve, reject) => {
       setIsLoading(true);
@@ -50,6 +52,10 @@ function usePromise<T, TArgs extends any[] = []>(
           setResult(r);
           if (receiveCallbacks.current.length > 0) {
             receiveCallbacks.current.forEach((callback) => callback(r));
+          }
+          // 在 result 更新后执行回调函数
+          if (resultCallback.current) {
+            resultCallback.current(r);
           }
           resolve(r);
         })
@@ -72,7 +78,18 @@ function usePromise<T, TArgs extends any[] = []>(
     }
   }, [option.immediate]);
 
-  return { result, error, isLoading, refresh, onReceive, onError };
+
+  return {
+    result,
+    error,
+    isLoading,
+    refresh,
+    onReceive,
+    onError,
+    setResultCallback: (callback: (result: T | null) => void) => {
+      resultCallback.current = callback;
+    },
+  };
 }
 
 export default usePromise;
