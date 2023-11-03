@@ -1,17 +1,7 @@
-// import { create } from "zustand";
-// import { User } from "@/model/user";
-// const initData: User = {
-//   userInfo: null,
-//   token: null,
-// };
-// type Actions = {
-//   setUserInfo: (userInfo: { userName: string; userId: number }) => void;
-//   setToken: (token: string) => void;
-// };
+import { atom, useAtom } from "jotai";
+import { UserInfo, MaybeIsNull, User } from "@/model/user";
 
-// export const useUserStore = create<User & Actions>((set) => ({
-//   ...initData,
-//   setUserInfo: (userInfo: { userName: string; userId: number }) =>
-//     set(() => ({ userInfo: userInfo })),
-//   setToken: (token: string) => set(() => ({ token: token })),
-// }));
+export const userAtom = atom<User>({
+  token: null,
+  userInfo: null,
+});

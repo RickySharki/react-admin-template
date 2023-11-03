@@ -2,6 +2,9 @@ import { Button, Checkbox, Form, Input } from "antd";
 import { useEffect } from "react";
 import { login } from "@/https/login";
 import usePromise from "@/hooks/usePromise";
+import { userAtom } from "@/store/user";
+import { useAtom } from "jotai";
+
 const onFinishFailed = (errorInfo: Record<string, any>) => {
   console.log("Failed:", errorInfo);
 };
@@ -13,6 +16,7 @@ type FieldType = {
 };
 
 const LoginForm = () => {
+  const [userInfo, setUser] = useAtom(userAtom);
   const { result, refresh } = usePromise((values: Record<string, string>) =>
     login(values)
   );
@@ -22,48 +26,52 @@ const LoginForm = () => {
   // 监听result的变化
   useEffect(() => {
     console.log("result", result);
+    setUser(result);
   }, [result]);
   return (
-    <Form
-      name="basic"
-      labelCol={{ span: 8 }}
-      wrapperCol={{ span: 16 }}
-      style={{ maxWidth: 600 }}
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      autoComplete="off"
-    >
-      <Form.Item<FieldType>
-        label="用户名"
-        name="username"
-        rules={[{ required: true, message: "Please input your username!" }]}
+    <>
+      <h1>{JSON.stringify(userInfo)}</h1>
+      <Form
+        name="basic"
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 16 }}
+        style={{ maxWidth: 600 }}
+        initialValues={{ remember: true }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
       >
-        <Input />
-      </Form.Item>
+        <Form.Item<FieldType>
+          label="用户名"
+          name="username"
+          rules={[{ required: true, message: "Please input your username!" }]}
+        >
+          <Input />
+        </Form.Item>
 
-      <Form.Item<FieldType>
-        label="密码"
-        name="password"
-        rules={[{ required: true, message: "Please input your password!" }]}
-      >
-        <Input.Password />
-      </Form.Item>
+        <Form.Item<FieldType>
+          label="密码"
+          name="password"
+          rules={[{ required: true, message: "Please input your password!" }]}
+        >
+          <Input.Password />
+        </Form.Item>
 
-      <Form.Item<FieldType>
-        name="remember"
-        valuePropName="checked"
-        wrapperCol={{ offset: 8, span: 16 }}
-      >
-        <Checkbox>Remember me</Checkbox>
-      </Form.Item>
+        <Form.Item<FieldType>
+          name="remember"
+          valuePropName="checked"
+          wrapperCol={{ offset: 8, span: 16 }}
+        >
+          <Checkbox>Remember me</Checkbox>
+        </Form.Item>
 
-      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
-    </Form>
+        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+      </Form>
+    </>
   );
 };
 export default LoginForm;

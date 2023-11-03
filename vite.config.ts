@@ -8,6 +8,9 @@ import presetUno from "@unocss/preset-uno";
 // mock
 import { viteMockServe } from "vite-plugin-mock";
 import { resolve } from "path";
+//jotai
+import jotaiDebugLabel from 'jotai/babel/plugin-debug-label'
+import jotaiReactRefresh from 'jotai/babel/plugin-react-refresh'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -15,13 +18,6 @@ export default defineConfig(({ command, mode }) => {
   // 设置第三个参数为 '' 来加载所有环境变量，而不管是否有 `VITE_` 前缀。
   const env = loadEnv(mode, process.cwd(), "");
   const isDev = mode === "development";
-  console.log(
-    "🚀 ~ file: vite.config.ts:13 ~ defineConfig ~ env:",
-    env,
-    command,
-    mode,
-    isDev
-  );
   return {
     resolve: {
 			alias: {
@@ -29,7 +25,7 @@ export default defineConfig(({ command, mode }) => {
 			}
 		},
     plugins: [
-      react(),
+      react({ babel: { plugins: [jotaiDebugLabel, jotaiReactRefresh] } }),
       UnoCSS({
         shortcuts: [
           {

@@ -1,18 +1,25 @@
 import { HashRouter } from "react-router-dom";
 import Router from "@/routers/index";
 import { ConfigProvider } from "antd";
-import React from "react";
+import { DevTools } from "jotai-devtools";
+import { Provider, createStore } from "jotai";
 
+import globalStore from "@/store/global";
 import "./App.scss";
 // import * as echarts from 'echarts';
 
 const App = () => {
   return (
-    <HashRouter>
-      <ConfigProvider>
-        <Router />
-      </ConfigProvider>
-    </HashRouter>
+    <>
+      <Provider store={globalStore}>
+        <DevTools></DevTools>
+        <HashRouter>
+          <ConfigProvider>
+            <Router />
+          </ConfigProvider>
+        </HashRouter>
+      </Provider>
+    </>
   );
 };
 

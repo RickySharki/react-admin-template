@@ -3,7 +3,7 @@ export interface User {
   userInfo: MaybeIsNull<UserInfo>;
 }
 
-interface UserInfo {
+export interface UserInfo {
   userName: string;
   userId: number;
 }
