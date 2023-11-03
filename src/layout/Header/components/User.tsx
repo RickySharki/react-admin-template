@@ -3,10 +3,11 @@ import { Dropdown, Avatar, Modal, message } from "antd";
 import UserIcon from "@/assets/images/logo.png";
 import { useNavigate } from "react-router-dom";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
-import React from "react";
+import { userAtom } from "@/store/user";
+import { useAtom } from "jotai";
 const UserDropDownMenu = () => {
   const navigate = useNavigate();
-
+  const [_, setUser] = useAtom(userAtom);
   // 退出登录
   const logout = () => {
     Modal.confirm({
@@ -16,6 +17,7 @@ const UserDropDownMenu = () => {
       okText: "确认",
       cancelText: "取消",
       onOk: () => {
+        setUser({ userInfo: null, token: null});
         message.success("退出登录成功！");
         navigate("/login");
       },
