@@ -40,6 +40,9 @@ devDependencies:
   '@testing-library/react':
     specifier: ^14.0.0
     version: 14.0.0(react-dom@18.2.0)(react@18.2.0)
+  '@types/crypto-js':
+    specifier: ^4.2.1
+    version: 4.2.1
   '@types/jest':
     specifier: ^29.5.5
     version: 29.5.5
@@ -76,6 +79,9 @@ devDependencies:
   axios:
     specifier: ^1.5.0
     version: 1.5.0
+  crypto-js:
+    specifier: ^4.2.0
+    version: 4.2.0
   eslint:
     specifier: ^8.45.0
     version: 8.50.0
@@ -1897,6 +1903,10 @@ packages:
     resolution: {integrity: sha512-Lt9Urpmkd0SS1EqmTkkUhaQD5jMItImRxsvVwzy4lVKPCI67rH7udDUxR8KrZvntlqSXTj833YXiHrU2y658Sw==}
     dev: true
 
+  /@types/crypto-js@4.2.1:
+    resolution: {integrity: sha512-FSPGd9+OcSok3RsM0UZ/9fcvMOXJ1ENE/ZbLfOPlBWj7BgXtEAM8VYfTtT760GiLbQIMoVozwVuisjvsVwqYWw==}
+    dev: true
+
   /@types/estree@1.0.2:
     resolution: {integrity: sha512-VeiPZ9MMwXjO32/Xu7+OwflfmeoRwkE/qzndw42gGtgJwZopBnzy2gD//NN1+go1mADzkDcqf/KnFRSjTJ8xJA==}
     dev: true
@@ -3118,6 +3128,10 @@ packages:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
+    dev: true
+
+  /crypto-js@4.2.0:
+    resolution: {integrity: sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q==}
     dev: true
 
   /css-tree@2.3.1:
