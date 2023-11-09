@@ -5,10 +5,7 @@ import { useRequest } from "ahooks";
 import { userAtom } from "@/store/user";
 import { useAtom } from "jotai";
 import CryptoJS from "crypto-js";
-
-const onFinishFailed = (errorInfo: Record<string, any>) => {
-  console.log("Failed:", errorInfo);
-};
+import { useTranslation } from "react-i18next";
 
 type FieldType = {
   username?: string;
@@ -17,24 +14,15 @@ type FieldType = {
 };
 
 const LoginForm = () => {
+  // 获取国际化翻译函数
+  const { t } = useTranslation();
   const [_, setUser] = useAtom(userAtom);
   //获取表单实例
   const [form] = Form.useForm();
   const { data, loading, run } = useRequest(login, {
     manual: true,
   });
-  // const getUserInfoToLogin = (userInfo: User) => {
-  //   Modal.confirm({
-  //     content: "是否使用本地缓存的用户信息登录？",
-  //     centered: true,
-  //     onOk: () => {
-  //       run(userInfo);
-  //     },
-  //     onCancel: () => {
-        // form.setFieldsValue(userInfo);
-  //     },
-  //   });
-  // };
+
   const onFinish = async (values: Record<string, any>) => {
     if (values.remember) {
       localStorage.setItem(
@@ -45,7 +33,6 @@ const LoginForm = () => {
     run(values);
   };
   useEffect(() => {
-    debugger;
     const encryptedData = localStorage.getItem("userInfo");
     if (encryptedData) {
       const bytes = CryptoJS.AES.decrypt(encryptedData, "UserInfoKey");
@@ -73,11 +60,10 @@ const LoginForm = () => {
         style={{ maxWidth: 600 }}
         initialValues={{ remember: true }}
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
         <Form.Item<FieldType>
-          label="用户名"
+          label={t("login.username")}
           name="username"
           rules={[{ required: true, message: "Please input your username!" }]}
         >
@@ -85,7 +71,7 @@ const LoginForm = () => {
         </Form.Item>
 
         <Form.Item<FieldType>
-          label="密码"
+          label={t("login.password")}
           name="password"
           rules={[{ required: true, message: "Please input your password!" }]}
         >
@@ -97,12 +83,12 @@ const LoginForm = () => {
           valuePropName="checked"
           wrapperCol={{ offset: 8, span: 16 }}
         >
-          <Checkbox>Remember me</Checkbox>
+          <Checkbox>{t("login.remember")}</Checkbox>
         </Form.Item>
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" htmlType="submit">
-            Submit
+            {t("button.login")}
           </Button>
         </Form.Item>
       </Form>

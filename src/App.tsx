@@ -6,6 +6,7 @@ import { Provider, createStore } from "jotai";
 
 import globalStore from "@/store/global";
 import "./App.scss";
+import './lang/i18n/config';
 // import * as echarts from 'echarts';
 
 const App = () => {

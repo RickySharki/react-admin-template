@@ -1,0 +1,25 @@
+{
+    "button":{
+        "confirm":"确认",
+        "cancel":"取消",
+        "submit":"提交",
+        "save":"保存",
+        "delete":"删除",
+        "edit":"编辑",
+        "add":"添加",
+        "search":"搜索",
+        "reset":"重置",
+        "close":"关闭",
+        "back":"返回",
+        "next":"下一步",
+        "finish":"完成",
+        "view":"查看",
+        "login":"登录"
+    },
+    "login":{
+        "title":"登录",
+        "username":"用户名",
+        "password":"密码",
+        "remember":"记住我"
+    }
+}

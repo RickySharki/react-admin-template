@@ -1,0 +1,25 @@
+{
+    "button":{
+        "confirm":"Confirm",
+        "cancel":"Cancel",
+        "submit":"Submit",
+        "save":"Save",
+        "delete":"Delete",
+        "edit":"Edit",
+        "add":"Add",
+        "search":"Search",
+        "reset":"Reset",
+        "close":"Close",
+        "back":"Back",
+        "next":"Next",
+        "finish":"Finish",
+        "view":"View",
+        "login":"Login"
+    },
+    "login":{
+        "title":"Login",
+        "username":"Username",
+        "password":"Password",
+        "remember":"Remember me"
+    }
+}
