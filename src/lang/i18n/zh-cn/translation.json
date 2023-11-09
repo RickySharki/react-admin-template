@@ -21,5 +21,8 @@
         "username":"用户名",
         "password":"密码",
         "remember":"记住我"
+    },
+    "Tooltip":{
+        "languageToggleTip":"点击切换语言"
     }
 }

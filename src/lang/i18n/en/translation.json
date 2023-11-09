@@ -21,5 +21,8 @@
         "username":"Username",
         "password":"Password",
         "remember":"Remember me"
+    },
+    "Tooltip":{
+        "languageToggleTip":"Toggle language"
     }
 }
