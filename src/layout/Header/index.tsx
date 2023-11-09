@@ -1,5 +1,4 @@
 import UserDropDownMenu from "./components/User";
-import React from "react";
 
 const LayoutHeader = () => {
   return (

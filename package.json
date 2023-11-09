@@ -17,6 +17,7 @@
     "echarts": "^5.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.11.0",
     "react-router-dom": "^6.16.0"
   },
   "devDependencies": {
@@ -59,6 +60,7 @@
     "ts-node": "^10.9.1",
     "typescript": "^5.0.2",
     "unocss": "^0.56.1",
+    "unplugin-auto-import": "^0.16.7",
     "vite": "^4.4.5",
     "vite-plugin-mock": "2.9.8"
   },

@@ -9,9 +9,11 @@ import presetUno from "@unocss/preset-uno";
 import { viteMockServe } from "vite-plugin-mock";
 import { resolve } from "path";
 //jotai
-import jotaiDebugLabel from 'jotai/babel/plugin-debug-label'
-import jotaiReactRefresh from 'jotai/babel/plugin-react-refresh'
-
+import jotaiDebugLabel from "jotai/babel/plugin-debug-label";
+import jotaiReactRefresh from "jotai/babel/plugin-react-refresh";
+// auto-importer
+import AutoImport from "unplugin-auto-import/vite";
+import { AntDesignResolver } from "./build/antd";
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
   // 根据当前工作目录中的 `mode` 加载 .env 文件
@@ -20,10 +22,10 @@ export default defineConfig(({ command, mode }) => {
   const isDev = mode === "development";
   return {
     resolve: {
-			alias: {
-				"@": resolve(__dirname, "./src")
-			}
-		},
+      alias: {
+        "@": resolve(__dirname, "./src"),
+      },
+    },
     plugins: [
       react({ babel: { plugins: [jotaiDebugLabel, jotaiReactRefresh] } }),
       UnoCSS({
@@ -47,15 +49,25 @@ export default defineConfig(({ command, mode }) => {
         mockPath: "./src/service/mock",
         // 本地、生产都使用mock
         localEnabled: true,
-        prodEnabled: true
+        prodEnabled: true,
+      }),
+      AutoImport({
+        imports: ["react"],
+        dts: true,
+        resolvers: [
+          // 使用编写的解析器，处理antd的组件
+          AntDesignResolver({
+            resolveIcons: true,
+          }),
+        ],
       }),
     ],
     server: {
-      host: '0.0.0.0',
+      host: "0.0.0.0",
       port: 9901,
       open: true,
       proxy: {
-        '/api': 'http://localhost:9901',
+        "/api": "http://localhost:9901",
       },
     },
   };

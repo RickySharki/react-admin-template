@@ -1,8 +1,7 @@
-import { createStore, atom } from "jotai";
+import { createStore,atom } from "jotai";
 
 const globalStore = createStore();
-
-globalStore.set(atom("light"), "light");
-globalStore.set(atom("zh-CN"), "zh-CN");
-
+export const languageAtom = atom("cn");
+// 初始化设置语言
+globalStore.set(languageAtom, "cn");
 export default globalStore;

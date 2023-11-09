@@ -5,7 +5,7 @@ import translationChinese from './zh-cn/translation.json';
 
 
 i18next.use(initReactI18next).init({
-  lng: 'en', // if you're using a language detector, do not define the lng option
+  lng: 'cn',
   debug: true,
   resources: {
     en: {
@@ -16,3 +16,5 @@ i18next.use(initReactI18next).init({
     },
   },
 });
+
+export default i18next

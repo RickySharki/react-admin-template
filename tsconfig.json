@@ -26,6 +26,7 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "vite.config.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "vite.config.ts","*.d.ts","build/*.ts"],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "types": ["vite/client"], // 👈 add this
 }

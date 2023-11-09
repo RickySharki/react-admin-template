@@ -51,7 +51,6 @@ const LoginForm = () => {
   }, [data]);
   return (
     <>
-      <h1>{loading}</h1>
       <Form
         name="basic"
         form={form}
@@ -85,7 +84,6 @@ const LoginForm = () => {
         >
           <Checkbox>{t("login.remember")}</Checkbox>
         </Form.Item>
-
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" htmlType="submit">
             {t("button.login")}

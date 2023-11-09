@@ -1,11 +1,9 @@
-import React, { useState } from "react";
 import {
   AppstoreOutlined,
   MailOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Menu } from "antd";
 import Logo from "./components/Logo";
 import "./index.scss";
 type MenuItem = Required<MenuProps>["items"][number];

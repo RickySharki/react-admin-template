@@ -1,5 +1,5 @@
 import type { MenuProps } from "antd";
-import { Dropdown, Avatar, Modal, message } from "antd";
+import { message } from "antd";
 import UserIcon from "@/assets/images/logo.png";
 import { useNavigate } from "react-router-dom";
 import { ExclamationCircleOutlined } from "@ant-design/icons";

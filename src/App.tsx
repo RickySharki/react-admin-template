@@ -1,14 +1,12 @@
 import { HashRouter } from "react-router-dom";
 import Router from "@/routers/index";
-import { ConfigProvider } from "antd";
 import { DevTools } from "jotai-devtools";
-import { Provider, createStore } from "jotai";
+import { Provider, atom } from "jotai";
 
 import globalStore from "@/store/global";
 import "./App.scss";
-import './lang/i18n/config';
+import "./lang/i18n/config";
 // import * as echarts from 'echarts';
-
 const App = () => {
   return (
     <>
