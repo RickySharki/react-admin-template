@@ -16,6 +16,7 @@ const UserDropDownMenu = () => {
       content: "是否确认退出登录？",
       okText: "确认",
       cancelText: "取消",
+      centered: true,
       onOk: () => {
         setUser({ userInfo: null, token: null});
         message.success("退出登录成功！");

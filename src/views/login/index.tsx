@@ -25,11 +25,6 @@ const Login = () => {
         <div className="flex justify-start">
           <LoginForm />
         </div>
-        <div>
-          <span>这是登录页</span>
-          <Button onClick={to404}>to 404 Page</Button>
-          <Button onClick={toContent}>to SubContent Page</Button>
-        </div>
       </div>
     </>
   );

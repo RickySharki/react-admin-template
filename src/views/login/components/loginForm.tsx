@@ -1,9 +1,10 @@
 import { Button, Checkbox, Form, Input } from "antd";
 import { useEffect } from "react";
 import { login } from "@/https/login";
-import usePromise from "@/hooks/usePromise";
+import { useRequest } from "ahooks";
 import { userAtom } from "@/store/user";
 import { useAtom } from "jotai";
+import CryptoJS from "crypto-js";
 
 const onFinishFailed = (errorInfo: Record<string, any>) => {
   console.log("Failed:", errorInfo);
@@ -16,23 +17,57 @@ type FieldType = {
 };
 
 const LoginForm = () => {
-  const [userInfo, setUser] = useAtom(userAtom);
-  const { result, refresh } = usePromise((values: Record<string, string>) =>
-    login(values)
-  );
+  const [_, setUser] = useAtom(userAtom);
+  //获取表单实例
+  const [form] = Form.useForm();
+  const { data, loading, run } = useRequest(login, {
+    manual: true,
+  });
+  // const getUserInfoToLogin = (userInfo: User) => {
+  //   Modal.confirm({
+  //     content: "是否使用本地缓存的用户信息登录？",
+  //     centered: true,
+  //     onOk: () => {
+  //       run(userInfo);
+  //     },
+  //     onCancel: () => {
+        // form.setFieldsValue(userInfo);
+  //     },
+  //   });
+  // };
   const onFinish = async (values: Record<string, any>) => {
-    await refresh(values);
+    if (values.remember) {
+      localStorage.setItem(
+        "userInfo",
+        CryptoJS.AES.encrypt(JSON.stringify(values), "UserInfoKey").toString()
+      );
+    }
+    run(values);
   };
+  useEffect(() => {
+    debugger;
+    const encryptedData = localStorage.getItem("userInfo");
+    if (encryptedData) {
+      const bytes = CryptoJS.AES.decrypt(encryptedData, "UserInfoKey");
+      const decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+      if (decryptedData.remember) {
+        // getUserInfoToLogin(decryptedData);
+        form.setFieldsValue(decryptedData);
+      }
+    }
+  }, []);
   // 监听result的变化
   useEffect(() => {
-    console.log("result", result);
-    setUser(result);
-  }, [result]);
+    console.log("result", data);
+    //@ts-expect-error
+    setUser(data);
+  }, [data]);
   return (
     <>
-      <h1>{JSON.stringify(userInfo)}</h1>
+      <h1>{loading}</h1>
       <Form
         name="basic"
+        form={form}
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
         style={{ maxWidth: 600 }}
