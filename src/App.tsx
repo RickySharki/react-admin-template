@@ -1,7 +1,7 @@
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Router from "@/routers/index";
 import { DevTools } from "jotai-devtools";
-import { Provider, useAtom } from "jotai";
+import { Provider } from "jotai";
 import enUS from "antd/locale/en_US";
 import zhCN from "antd/locale/zh_CN";
 import globalStore from "@/store/global";
@@ -22,11 +22,11 @@ const App = () => {
     <>
       <Provider store={globalStore}>
         <DevTools></DevTools>
-        <HashRouter>
+        <BrowserRouter>
           <ConfigProvider locale={locale}>
             <Router />
           </ConfigProvider>
-        </HashRouter>
+        </BrowserRouter>
       </Provider>
     </>
   );

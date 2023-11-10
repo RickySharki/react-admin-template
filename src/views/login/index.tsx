@@ -19,17 +19,11 @@ const Login = () => {
     navigate("/content");
   };
 
-  // const toggleLanguage = () => {
-  //   const currentLanguage = globalStore.get(languageAtom);
-  //   const toToggleLanguage = currentLanguage === "cn" ? "en" : "cn";
-  //   globalStore.set(languageAtom, toToggleLanguage);
-  //   i18n.changeLanguage(toToggleLanguage);
-  // };
-
   useEffect(() => {
     if (userInfo?.userInfo && userInfo?.token) {
       toContent();
     }
+    return () => {};
   }, [userInfo]);
   return (
     <>
