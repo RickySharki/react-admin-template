@@ -3,24 +3,15 @@ import LoginForm from "./components/loginForm";
 import { useAtom, useStore } from "jotai";
 import { userAtom } from "@/store/user";
 import { TbLanguage } from "react-icons/tb";
-import { languageAtom } from "@/store/global";
-import i18n from "@/lang/i18n/config";
+// import { languageAtom } from "@/store/global";
+// import i18n from "@/lang/i18n/config";
 import { useTranslation } from "react-i18next";
+import { toggleLanguage } from "@/hooks/useToggleLanguage";
 
 const Login = () => {
   const { t } = useTranslation();
   // 获取全局store
   const globalStore = useStore();
-  console.log(
-    "🚀 ~ file: loginForm.tsx:21 ~ LoginForm ~ globalStore:",
-    globalStore.get(languageAtom)
-  );
-
-  // 订阅languageAtom的变化
-  globalStore.sub(languageAtom, () => {
-    console.log("countAtom value is changed to", globalStore.get(languageAtom));
-  });
-
   const [userInfo, _] = useAtom(userAtom);
   const navigate = useNavigate();
 
@@ -28,12 +19,12 @@ const Login = () => {
     navigate("/content");
   };
 
-  const toggleLanguage = () => {
-    const currentLanguage = globalStore.get(languageAtom);
-    const toToggleLanguage = currentLanguage === "cn" ? "en" : "cn";
-    globalStore.set(languageAtom, toToggleLanguage);
-    i18n.changeLanguage(toToggleLanguage);
-  };
+  // const toggleLanguage = () => {
+  //   const currentLanguage = globalStore.get(languageAtom);
+  //   const toToggleLanguage = currentLanguage === "cn" ? "en" : "cn";
+  //   globalStore.set(languageAtom, toToggleLanguage);
+  //   i18n.changeLanguage(toToggleLanguage);
+  // };
 
   useEffect(() => {
     if (userInfo?.userInfo && userInfo?.token) {
@@ -52,7 +43,7 @@ const Login = () => {
             <Button
               shape="circle"
               icon={<TbLanguage />}
-              onClick={toggleLanguage}
+              onClick={() => toggleLanguage(globalStore)}
             ></Button>
           </Tooltip>
         </div>

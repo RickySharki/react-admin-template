@@ -14,7 +14,8 @@
         "next":"下一步",
         "finish":"完成",
         "view":"查看",
-        "login":"登录"
+        "login":"登录",
+        "logout":"退出登录"
     },
     "login":{
         "title":"登录",
@@ -24,5 +25,8 @@
     },
     "Tooltip":{
         "languageToggleTip":"点击切换语言"
+    },
+    "Header":{
+        "title":"Vue后台管理"
     }
 }

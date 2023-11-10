@@ -14,7 +14,8 @@
         "next":"Next",
         "finish":"Finish",
         "view":"View",
-        "login":"Login"
+        "login":"Login",
+        "logout":"Logout"
     },
     "login":{
         "title":"Login",
@@ -24,5 +25,8 @@
     },
     "Tooltip":{
         "languageToggleTip":"Toggle language"
+    },
+    "Header":{
+        "title":"Vue Admin"
     }
 }

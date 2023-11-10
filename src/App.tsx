@@ -12,12 +12,9 @@ import { Locale } from "antd/es/locale";
 
 const App = () => {
   const [locale, setLocale] = useState<Locale>(zhCN);
-  // const [language] = useAtom(languageAtom);
-  // const isEn = language === "en";
+
   // 订阅languageAtom的变化
   globalStore.sub(languageAtom, () => {
-    console.log("countAtom value is changed to", globalStore.get(languageAtom));
-    debugger;
     setLocale(globalStore.get(languageAtom) === "en" ? enUS : zhCN);
   });
 
