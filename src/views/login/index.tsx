@@ -8,6 +8,7 @@ import { TbLanguage } from "react-icons/tb";
 import { useTranslation } from "react-i18next";
 import { toggleLanguage } from "@/hooks/useToggleLanguage";
 
+
 const Login = () => {
   const { t } = useTranslation();
   // 获取全局store
@@ -28,11 +29,9 @@ const Login = () => {
   return (
     <>
       <div className="login h-full w-full flex flex-col">
-        <div className="login-top h-50px flex items-center justify-end pr-4">
+        <div className="login-top h-50px flex items-center justify-end pr-20">
           <Tooltip
             title={t("Tooltip.languageToggleTip")}
-            trigger="click"
-            defaultOpen
           >
             <Button
               shape="circle"

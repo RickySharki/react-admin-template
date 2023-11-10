@@ -9,7 +9,7 @@ import "./App.scss";
 import "./lang/i18n/config";
 import { languageAtom } from "@/store/global";
 import { Locale } from "antd/es/locale";
-
+import AuthRouter from "@/routers/utils/authRouter";
 const App = () => {
   const [locale, setLocale] = useState<Locale>(zhCN);
 
@@ -24,7 +24,9 @@ const App = () => {
         <DevTools></DevTools>
         <BrowserRouter>
           <ConfigProvider locale={locale}>
-            <Router />
+            <AuthRouter>
+              <Router />
+            </AuthRouter>
           </ConfigProvider>
         </BrowserRouter>
       </Provider>
