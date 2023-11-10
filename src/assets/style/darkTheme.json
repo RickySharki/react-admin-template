@@ -1,0 +1,14 @@
+{
+  "components": {
+    "Menu": {
+      "dangerItemActiveBg": "rgb(97, 126, 167)",
+      "colorBgElevated": "rgb(122, 144, 178)",
+      "itemBg": "rgb(0, 0, 0)",
+      "itemSelectedBg": "rgba(206, 1, 11, 0.91)",
+      "itemActiveBg": "rgba(19, 17, 17, 0.51)",
+      "itemHoverColor": "rgba(255, 8, 8, 0.88)",
+      "itemColor": "rgba(136, 6, 6, 0.88)",
+      "colorPrimary": "rgb(250, 219, 20)"
+    }
+  }
+}

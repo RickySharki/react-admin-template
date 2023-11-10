@@ -66,7 +66,7 @@ const App: React.FC = () => {
     <div className="layout-menu">
       <Logo />
       <Menu
-        theme={"dark"}
+        // theme={"dark"}
         mode="inline"
         openKeys={openKeys}
         onOpenChange={onOpenChange}

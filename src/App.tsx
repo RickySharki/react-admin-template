@@ -9,6 +9,10 @@ import "./App.scss";
 import "./lang/i18n/config";
 import { languageAtom } from "@/store/global";
 import { Locale } from "antd/es/locale";
+import { ThemeProvider } from "antd-style";
+import lightTheme from "@/assets/style/lightTheme.json";
+import darkTheme from "@/assets/style/darkTheme.json";
+import { themeModeAtom, customToken } from "@/store/theme";
 
 const App = () => {
   const [locale, setLocale] = useState<Locale>(zhCN);
@@ -18,14 +22,24 @@ const App = () => {
     setLocale(globalStore.get(languageAtom) === "en" ? enUS : zhCN);
   });
 
+  const [themeMode, setThemeMode] = useState("light");
+  globalStore.sub(themeModeAtom, () => {
+    setThemeMode(globalStore.get(themeModeAtom) === "light" ? "light" : "dark");
+  });
   return (
     <>
       <Provider store={globalStore}>
         <DevTools></DevTools>
         <BrowserRouter>
-          <ConfigProvider locale={locale}>
-            <Router />
-          </ConfigProvider>
+          <ThemeProvider
+            customToken={customToken}
+            theme={() => (themeMode === "light" ? lightTheme : darkTheme)}
+            appearance={themeMode}
+          >
+            <ConfigProvider locale={locale}>
+              <Router />
+            </ConfigProvider>
+          </ThemeProvider>
         </BrowserRouter>
       </Provider>
     </>

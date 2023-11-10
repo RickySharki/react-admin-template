@@ -1,32 +1,33 @@
 {
-    "button":{
-        "confirm":"Confirm",
-        "cancel":"Cancel",
-        "submit":"Submit",
-        "save":"Save",
-        "delete":"Delete",
-        "edit":"Edit",
-        "add":"Add",
-        "search":"Search",
-        "reset":"Reset",
-        "close":"Close",
-        "back":"Back",
-        "next":"Next",
-        "finish":"Finish",
-        "view":"View",
-        "login":"Login",
-        "logout":"Logout"
-    },
-    "login":{
-        "title":"Login",
-        "username":"Username",
-        "password":"Password",
-        "remember":"Remember me"
-    },
-    "Tooltip":{
-        "languageToggleTip":"Toggle language"
-    },
-    "Header":{
-        "title":"Vue Admin"
-    }
+  "button": {
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "reset": "Reset",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "finish": "Finish",
+    "view": "View",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "login": {
+    "title": "Login",
+    "username": "Username",
+    "password": "Password",
+    "remember": "Remember me"
+  },
+  "Tooltip": {
+    "languageToggleTip": "Toggle language",
+    "themeToggleTip": "Toggle theme"
+  },
+  "Header": {
+    "title": "Vue Admin"
+  }
 }
