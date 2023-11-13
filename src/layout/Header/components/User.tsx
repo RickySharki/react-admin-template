@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 import { languageAtom } from "@/store/global";
 import globalStore from "@/store/global";
 import { toggleLanguage } from "@/hooks/useToggleLanguage";
-
+import { toggleTheme } from "@/hooks/useToggleTheme";
 const UserDropDownMenu = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -46,6 +46,11 @@ const UserDropDownMenu = () => {
       key: "language",
       label: t("Tooltip.languageToggleTip"),
       onClick: () => toggleLanguage(globalStore),
+    },
+    {
+      key: "theme",
+      label: t("Tooltip.themeToggleTip"),
+      onClick: () => toggleTheme(globalStore),
     },
   ];
   return (

@@ -24,7 +24,8 @@
         "remember":"记住我"
     },
     "Tooltip":{
-        "languageToggleTip":"点击切换语言"
+        "languageToggleTip":"点击切换语言",
+        "themeToggleTip":"点击切换主题"
     },
     "Header":{
         "title":"Vue后台管理"
