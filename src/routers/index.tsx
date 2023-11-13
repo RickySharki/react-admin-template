@@ -4,6 +4,7 @@ import Login from "@/views/login";
 import Error from "@/components/error/404";
 import LayoutContainer from "@/layout";
 import Content from "@/views/content";
+
 export const rootRouter: RouteObject[] = [
   {
     path: "/",
@@ -24,6 +25,11 @@ export const rootRouter: RouteObject[] = [
       {
         path: "/content",
         element: <Content />,
+        meta:{
+          requiresAuth: true,
+          title: "内容页",
+          key: "content",
+        }
       },
     ],
   },

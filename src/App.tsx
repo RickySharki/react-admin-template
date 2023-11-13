@@ -14,6 +14,7 @@ import lightTheme from "@/assets/style/lightTheme.json";
 import darkTheme from "@/assets/style/darkTheme.json";
 import { themeModeAtom, customToken } from "@/store/theme";
 
+import AuthRouter from "@/routers/utils/authRouter";
 const App = () => {
   const [locale, setLocale] = useState<Locale>(zhCN);
 
@@ -37,7 +38,9 @@ const App = () => {
             appearance={themeMode}
           >
             <ConfigProvider locale={locale}>
+            <AuthRouter>
               <Router />
+              </AuthRouter>
             </ConfigProvider>
           </ThemeProvider>
         </BrowserRouter>

@@ -15,25 +15,21 @@ const Login = () => {
   const [userInfo, _] = useAtom(userAtom);
   const navigate = useNavigate();
 
-  const toContent = () => {
+  const toContent = useCallback(() => {
     navigate("/content");
-  };
+  }, [navigate]);
 
   useEffect(() => {
     if (userInfo?.userInfo && userInfo?.token) {
       toContent();
     }
     return () => {};
-  }, [userInfo]);
+  }, [userInfo, toContent]);
   return (
     <>
       <div className="login h-full w-full flex flex-col">
-        <div className="login-top h-50px flex items-center justify-end pr-4">
-          <Tooltip
-            title={t("Tooltip.languageToggleTip")}
-            trigger="click"
-            defaultOpen
-          >
+        <div className="login-top h-50px flex items-center justify-end pr-20">
+          <Tooltip title={t("Tooltip.languageToggleTip")}>
             <Button
               shape="circle"
               icon={<TbLanguage />}

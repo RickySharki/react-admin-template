@@ -42,13 +42,13 @@ const LoginForm = () => {
         form.setFieldsValue(decryptedData);
       }
     }
-  }, []);
+  }, [form]);
   // 监听result的变化
   useEffect(() => {
     console.log("result", data);
     //@ts-expect-error
     setUser(data);
-  }, [data]);
+  }, [data,setUser]);
   return (
     <>
       <Form
